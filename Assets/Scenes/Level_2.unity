@@ -37477,6 +37477,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level01
       objectReference: {fileID: 0}
+    - target: {fileID: 3957507680921322113, guid: ab1e49b1a2d16ae4cb26255cc41b6723,
+        type: 3}
+      propertyPath: animationDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4083740355190943133, guid: ab1e49b1a2d16ae4cb26255cc41b6723,
+        type: 3}
+      propertyPath: particleInvencible
+      value: 
+      objectReference: {fileID: 2120200318}
     - target: {fileID: 6112642533564897084, guid: ab1e49b1a2d16ae4cb26255cc41b6723,
         type: 3}
       propertyPath: m_Pivot.x

@@ -36,6 +36,7 @@ public class PlayerController : Singleton<PlayerController>
     private Vector3 _pos;
     private float _currentSpeed;
     private Vector3 _startPosition;
+    //private int levelToRestart;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class PlayerController : Singleton<PlayerController>
         ResetSpeed();
         _canRun = true;
         animatorManager.Play(AnimatorManager.AnimationType.RUN);
+        //levelToRestart = SceneManager.GetActiveScene().buildIndex;
     }
 
     void Update()
@@ -79,7 +81,9 @@ public class PlayerController : Singleton<PlayerController>
     private IEnumerator PlayDeadAnimationAndWait()
     {
         yield return new WaitForSeconds(animatorManager.GetAnimationLength(AnimatorManager.AnimationType.DEAD));
-        LoadLoserScene();        
+        LoadLoserScene();
+        //int levelToRestart = this.levelToRestart;
+        //SceneManager.LoadScene("LoserScene");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -118,11 +122,16 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void LoadLoserScene()
-    {        
-        {
-            SceneManager.LoadScene("LoserScene");
-        }
-    }    
+    {
+        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("LastLevelIndex", currentLevelIndex);
+        SceneManager.LoadScene("LoserScene");
+    }
+
+    /*public void RestartLevel()
+    {
+        SceneManager.LoadScene(levelToRestart);
+    }*/
 
     public void StartToRun()
     {

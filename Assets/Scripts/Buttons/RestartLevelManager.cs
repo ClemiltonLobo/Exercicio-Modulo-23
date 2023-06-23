@@ -7,7 +7,7 @@ public class RestartLevelManager : MonoBehaviour
 {
     public void RestartLevel()
     {
-        int currentLevel = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentLevel);
+        int lastLevelIndex = PlayerPrefs.GetInt("LastLevelIndex");
+        SceneManager.LoadScene(lastLevelIndex);
     }
 }
