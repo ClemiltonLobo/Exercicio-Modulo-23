@@ -98,7 +98,18 @@ public class PlayerController : Singleton<PlayerController>
     private IEnumerator PlayVictoryAnimationAndWait()
     {
         yield return new WaitForSeconds(animatorManager.GetAnimationLength(AnimatorManager.AnimationType.VICTORY));
-        LoadWinnerScene();
+
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        int totalLevels = SceneManager.sceneCountInBuildSettings - 1;
+
+        if (currentLevel < totalLevels)
+        {
+            SceneManager.LoadScene(currentLevel + 1);
+        }
+        else
+        {
+            LoadWinnerScene();
+        }
     }
 
     private void LoadWinnerScene()
