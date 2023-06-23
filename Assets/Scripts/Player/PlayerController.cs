@@ -17,7 +17,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
     public float minX = -5f; // o limite mínimo da posição x
-    public float maxX = 5f; // o limite máximo da posição x
+    public float maxX = 5f; // o limite máximo da posição x    
     //public Rigidbody rb;
 
     [Header("Text PowerUp Name")]
@@ -79,7 +79,7 @@ public class PlayerController : Singleton<PlayerController>
     private IEnumerator PlayDeadAnimationAndWait()
     {
         yield return new WaitForSeconds(animatorManager.GetAnimationLength(AnimatorManager.AnimationType.DEAD));
-        LoadLoserScene();
+        LoadLoserScene();        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -110,7 +110,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             LoadWinnerScene();
         }
-    }
+    }    
 
     private void LoadWinnerScene()
     {        
@@ -122,7 +122,7 @@ public class PlayerController : Singleton<PlayerController>
         {
             SceneManager.LoadScene("LoserScene");
         }
-    }
+    }    
 
     public void StartToRun()
     {
